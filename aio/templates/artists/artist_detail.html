@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}{{ block.super }} : {{ object.full_name }} {% endblock %}
+{% block content %}
+{% load fb_versions %}
+{% version object.image 'large' as image %}
+{% version object.photo 'small' as photo %}
+<div class="main">
+    <div class="artist">
+        <h2>{{ object.full_name }}</h2>
+        {% if object.city %}
+    	<h3>{{ object.city }}{% if object.state %}, {{ object.state }}{% endif %}</h3>
+    	{% endif %}
+    	{% if object.photo %}
+    	<img src="{{ photo }}" 
+    	               class = "photo"
+    	               width="{{ photo.width }}"
+    	               height="{{ photo.height }}"
+    	               alt="{{ object.full_name }}"
+    	               title="{{ object.full_name }}" />
+        {% endif %}
+        {% if object.website %}
+        {{ object.website|urlize }}
+        {% endif %}
+    	{{ object.bio|safe }}
+    	{% if object.image %}
+    	<div class="image">
+            <img src="{{ image }}" 
+    	               width="{{ image.width }}"
+    	               height="{{ image.height }}"
+    	               alt="{{ object.full_name }}"
+    	               title="{{ object.full_name }}" />
+        {% endif %}
+        </div>
+    </div>
+</div>
+<div class="aside">
+    {% if artists %}
+    <div id="artists" class="section">
+    <h2>Other AiO Artists</h2>
+    {% for artist in artists %}
+        {% version artist.image 'croppedthumbnail' as image %}
+        <div class="artist">
+            {% if artist.image %}
+    	       <a href="{{ artist.get_absolute_url }}" 
+    	          title="{{ artist.full_name }}">
+    	          <img src="{{ image }}" 
+    	               width="{{ image.width }}"
+    	               height="{{ image.height }}"
+    	               alt="{{ artist.full_name }}"
+    	               title="{{ artist.full_name }}" />
+    	       </a>
+    	       {% endif %}
+    	   <h3>
+    	       <a href="{{ artist.get_absolute_url }}" 
+    	          alt="{{ artist.full_name }}" 
+    	          title="{{ artist.full_name }}">{{ artist.full_name }}
+    	       </a>
+    	   </h3>
+    	   {% if artist.city %}
+    	   <h4>{{ artist.city }}{% if artist.state %}, {{ artist.state }}{% endif %}</h4>
+    	   {% endif %}
+    	   {{ artist.bio|safe|truncatewords_html:20 }}
+        </div>
+    {% endfor %}
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

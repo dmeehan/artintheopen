@@ -1,0 +1,132 @@
+{% extends "affiliates/affiliates.html" %}
+{% block title %}{{ block.super }}{% endblock %}
+{% block content %}
+{% load fb_versions %}
+<div class="main">
+<h2>Sponsors</h2>
+<div style="overflow:auto; margin-bottom:20px;">
+<ul>
+{% for affiliate in object_list %}
+{% if affiliate.affiliate_level.name == "Sponsor" %}
+<li style="clear:both;">
+        {% if affiliate.image %}
+        {% version affiliate.image 'thumbnail' as image %}
+	    {% if affiliate.website %}
+               <a href="{{ affiliate.website }}" 
+	              title="{{ affiliate.name }}">
+        {% endif %}
+        <img src="{{ image }}" 
+	         width="{{ image.width }}"
+	         height="{{ image.height }}"
+	         alt="{{ affiliate.name }}"
+	         title="{{ affiliate.name }}"
+             style="float:left; border:1px solid #ccc; margin:0 10px 10px 0;" />
+        {% if affiliate.website %}</a>{% endif %}
+	    {% endif %}
+        <p>
+        <strong>
+        {% if affiliate.website %}
+           <a href="{{ affiliate.website }}" 
+	          title="{{ affiliate.name }}">
+        {% endif %}
+           {{ affiliate.name }}
+	    {% if affiliate.website %}</a>{% endif %}
+        </strong>
+        </p>
+        </li>
+	{% endif %}
+{% endfor %}
+</ul>
+</div>
+{% block articles %}
+{{ block.super }}
+{% endblock %}
+<h2>Partner Events Calendar</h2>
+    {% if events %}
+    {% for event in events %}
+    <div class="event">
+    	<h3 class="date"><span class="month">{{ event.display_date|date:"M" }}</span>
+            <span class="day">{{ event.display_date|date:"d" }}</span>
+        </h3>
+        <p class="long-date">{{ event.affiliate.name }}</p>
+        <h4>
+            <a href="{{ event.get_absolute_url }}" 
+	           title="{{ event.full_name }}">{{ event.title }}
+            </a>
+        </h4>
+        {% if event.image %}
+        {% version event.image 'thumbnail' as thumb %}
+        
+            <a href="{{ event.get_absolute_url }}" 
+               title="{{ event.title }}">
+               <img src="{{ thumb }}" 
+                    width="{{ thumb.width }}"
+	                height="{{ thumb.height }}"
+	                alt="{{ event.title }}"
+	                title="{{ event.title }}" />
+            </a>
+        {% endif %}
+        
+        {{ event.description|safe|truncatewords_html:18 }}
+        
+    </div>
+    {% endfor %} 
+    {% else %}
+        <p>There are currently no upcoming events.</p>
+        <a href="{% url 'past_events' %}">View all past events</a>  
+    {% endif %}
+</div>
+{% block aside %}
+<div class="aside">
+    <div class="callout">
+	{{ block.super }}
+	</div>
+    <h2>Partners</h2>
+    <ul>
+    {% for affiliate in object_list %}
+    {% if affiliate.affiliate_level.name == "Partner" %}
+     <li>
+            {% if affiliate.website %}
+                   <a href="{{ affiliate.website }}" 
+               title="{{ affiliate.name }}">
+            {% endif %}
+            {{ affiliate.name }}
+        {% if affiliate.website %}</a>{% endif %}
+            </li>
+    {% endif %}
+    {% endfor %}
+    </ul>
+    <h2>AiO Friends</h2>
+    <ul>
+    {% for affiliate in object_list %}
+    {% if affiliate.affiliate_level.name == "AiO Friend" %}
+     <li>
+            {% if affiliate.website %}
+                   <a href="{{ affiliate.website }}" 
+               title="{{ affiliate.name }}">
+            {% endif %}
+            {{ affiliate.name }}
+        {% if affiliate.website %}</a>{% endif %}
+            </li>
+    {% endif %}
+    {% endfor %}
+    </ul>
+    <h2>Charter Patrons</h2>
+    <ul>
+    {% for affiliate in object_list %}
+    {% if affiliate.affiliate_level.name == "Charter Patron" %}
+     <li>
+            {% if affiliate.website %}
+                   <a href="{{ affiliate.website }}" 
+               title="{{ affiliate.name }}">
+            {% endif %}
+            {{ affiliate.name }}
+        {% if affiliate.website %}</a>{% endif %}
+            </li>
+    {% endif %}
+    {% endfor %}
+    </ul>
+
+</div>
+    {% endblock %}
+{% endblock %}

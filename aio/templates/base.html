@@ -1,0 +1,216 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+{% block title %}
+     Art in the Open Philadelphia
+{% endblock %}
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="City Parks Association" />
+<meta name="copyright" content="&copy; {% now "Y" %} City Parks 
+Association" />
+{% block css %}
+     <link href="{% static 'css/base.css' %}" rel="stylesheet" />
+{% endblock %}
+{% block js %}
+<script type="text/javascript"> 
+function validateAmount(amount){
+	if(amount.value.match( /^[0-9]+(\.([0-9]+))?$/)){
+		return true;
+	}else{
+		alert('You must enter a valid donation.');
+		amount.focus();
+		return false;
+	}
+}
+</script>
+{% endblock %}
+</head>
+<body {% block bodyid %}id="home"{% endblock %}>
+<div id="header">
+    {% block header %}
+    <h1 id="logo"><a href="/">Art in the Open Philadelphia</a></h1>
+        <div id="nav">
+            <ul>
+            	 <li id="tab-home">
+                    <a title="Home" href="/">Home</a></li>
+                <li id="tab-about">
+                    <a title="About" href="/about/">About</a></li>
+                <li id="tab-events">
+                    <a title="Events" href="/events/">Events</a></li>
+                <li id="tab-artists"> 
+                    <a title="Artists" href="/artists/">Artists</a></li>
+                <li id="tab-affiliates">
+                    <a title="affiliates" href="/affiliates/">Affiliates</a></li>
+                {% if user.is_authenticated %}
+                <li id="tab-participants" class="user">
+                    <a title="participants" href="{% url 'artist_info' %}">{{ user.first_name }}</a></li>
+                {% else %}
+                <!--<li class="user login">
+                    <a title="login" href="{% url login %}?next=/artists/participants/info">Artist Login</a></li>-->
+                {% endif %}
+           </ul>
+     {% endblock %}
+		</div>
+       </div>
+<div id="content">
+{% block content %}
+    {% block articles %}
+    {% load fb_versions %}
+    <div id="articles">
+    {% for item in items %}
+        <div class="article">
+            {% if item.display == 3  %}
+               <p class="teaser"> <a href="/{{ item.main_section}}/{{ item.article.slug }}">
+                {{ item.article.title }}</a></p>
+            {% else %}
+                <h2>{{ item.article.title }}</h2>
+                {% if item.display == 1 %}
+                	{% if item.article.image %}
+                	{% ifnotequal item.article.image_location "bottom" %}
+                    {% version item.article.image item.article.image_size as image  %}
+                    <img src="{{ image }}" class="{{ item.article.image_location }}" 
+            	         width="{{ image.width }}"
+            	         height="{{ image.height }}"
+            	         alt="{{ item.article.title }}"
+            	         title="{{ item.article.title }}" />
+            	    {% endifnotequal %}
+                    {% endif %}
+                    {{ item.article.body|safe }}                    
+                    {% if item.article.file %}
+                        <p class="download"><strong>Download:</strong>
+                        <a href="{{ item.article.file.url_full }}">
+                        {{ item.article.file.filename }}</a> ({{ item.article.file.filesize|filesizeformat }})
+                    {% endif %}
+                    {% if item.article.image %}
+                        {% ifequal item.article.image_location "bottom" %}
+                        {% version item.article.image item.article.image_size as image  %}
+                        <img src="{{ image }}" class="{{ item.article.image_location }}" 
+            	             width="{{ image.width }}"
+            	             height="{{ image.height }}"
+            	             alt="{{ item.article.title }}"
+            	             title="{{ item.article.title }}" />
+            	        {% endifequal %}
+            	    {% endif %}
+                {% else %}
+                {% if item.display == 2 %}
+                	{% if item.article.image %}
+                    {% version item.article.image 'small' as small %}
+                    <img src="{{ small }}" 
+                         class="{{ item.article.image_location }}"
+            	         width="{{ small.width }}"
+            	         height="{{ small.height }}"
+            	         alt="{{ item.article.title }}"
+            	         title="{{ item.article.title }}" />
+            		{% endif %}
+                    {{ item.article.excerpt|safe }}
+                     <p class="teaser">
+                     <a href="/{{ item.main_section|lower }}/{{ item.article.slug }}">
+                		Read More...</a></p>
+                {% endif %}{% endif %}
+            {% endif %}
+        </div>
+    {% endfor %}
+    </div>
+    {% endblock %}
+
+    {% block aside %}
+    {% if sub_items %}
+    {% for item in sub_items %}
+            {% ifchanged item.parent %}
+            {% endifchanged %}
+            <div class="article section">
+                {% if item.display == 3  %}
+                    <p><a href="{{ item.get_absolute_url }}">
+                    {{ item.article.title }}</a></p>
+                {% else %}
+                    <h2>{{ item.article.title }}</h2>
+                    {% if item.display == 1 %}
+                    	{% if item.article.image %}
+                        {% version item.article.image 'small' as small %}
+                        <img src="{{ small }}" 
+                	         width="{{ small.width }}"
+                	         height="{{ small.height }}"
+                	         alt="{{ item.article.title }}"
+                	         title="{{ item.article.title }}" />
+                		{% endif %}
+                        {{ item.article.body|safe }}
+                    {% else %}
+                    {% if item.display == 2 %}
+                    	{% if item.article.image %}
+                        {% version item.article.image 'small' as small %}
+                        <img src="{{ small }}" 
+                	         width="{{ small.width }}"
+                	         height="{{ small.height }}"
+                	         alt="{{ item.article.title }}"
+                	         title="{{ item.article.title }}" />
+                		{% endif %}
+                        {{ item.article.excerpt|safe }}
+                         <a class="teaser" href="{{ item.main_section|lower }}/{{ item.article.slug }}">
+                    		Read More...</a>
+                    {% endif %}{% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endblock %}
+{% endblock %}
+</div>
+<div id="footer">
+        {% block footer %}
+        <div id="meta">
+            <p id="copyright">
+                &copy; {% now "Y" %} <strong>Art in the Open Philadelphia</strong>
+            </p>
+	    <div id="credits">
+		  <a id="django" href="http://www.djangoproject.com/"> Made with Django</a> 
+		  <p>by <a href="http://www.level0design.com">_level0.design</a></p>
+            </div>
+	</div>
+        <div id="contact">
+            <h3>Contact Art in the Open</h3>
+            <ul>
+                <li>Sponsors:
+                <a 
+href='&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#112;&#111;&#110;&#115;&#111;&#114;&#64;&#97;&#114;&#116;&#105;&#110;&#116;&#104;&#101;&#111;&#112;&#101;&#110;&#112;&#104;&#105;&#108;&#97;&#46;&#111;&#114;&#103;'>&#115;&#112;&#111;&#110;&#115;&#111;&#114;&#64;&#97;&#114;&#116;&#105;&#110;&#116;&#104;&#101;&#111;&#112;&#101;&#110;&#112;&#104;&#105;&#108;&#97;&#46;&#111;&#114;&#103;</a>
+
+                </li>
+                <li>Artists:
+<a 
+href='&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#114;&#116;&#105;&#115;&#116;&#64;&#97;&#114;&#116;&#105;&#110;&#116;&#104;&#101;&#111;&#112;&#101;&#110;&#112;&#104;&#105;&#108;&#97;&#46;&#111;&#114;&#103;'>&#97;&#114;&#116;&#105;&#115;&#116;&#64;&#97;&#114;&#116;&#105;&#110;&#116;&#104;&#101;&#111;&#112;&#101;&#110;&#112;&#104;&#105;&#108;&#97;&#46;&#111;&#114;&#103;</a>
+
+                </li>
+               <li>Press:
+<a 
+href='&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#112;&#114;&#101;&#115;&#115;&#64;&#97;&#114;&#116;&#105;&#110;&#116;&#104;&#101;&#111;&#112;&#101;&#110;&#112;&#104;&#105;&#108;&#97;&#46;&#111;&#114;&#103;'>&#112;&#114;&#101;&#115;&#115;&#64;&#97;&#114;&#116;&#105;&#110;&#116;&#104;&#101;&#111;&#112;&#101;&#110;&#112;&#104;&#105;&#108;&#97;&#46;&#111;&#114;&#103;</a>
+
+               </li>
+                <li>General inquiries:
+<a 
+href='&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#97;&#114;&#116;&#105;&#110;&#116;&#104;&#101;&#111;&#112;&#101;&#110;&#112;&#104;&#105;&#108;&#97;&#46;&#111;&#114;&#103;'>&#105;&#110;&#102;&#111;&#64;&#97;&#114;&#116;&#105;&#110;&#116;&#104;&#101;&#111;&#112;&#101;&#110;&#112;&#104;&#105;&#108;&#97;&#46;&#111;&#114;&#103;</a>
+
+               </li>
+            </ul>
+         </div>
+
+            <div id="social">
+                <a id="twitter" href="http://twitter.com/artintheopen">Twitter</a>
+                <a id="facebook" 
+href="http://www.facebook.com/pages/Art-in-the-Open-Philadelphia/190880082998/">Facebook</a>
+	    </div>
+        {% endblock %}
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-9102912-4");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}{{ block.super }}{% endblock %}
+{% block content %}
+<div class="main">
+    {% load fb_versions %}
+    {% block articles %}
+    {{ block.super }}
+    {% endblock %}
+</div>
+<div class="aside">
+    {% if artists %}
+    <div id="artists" class="section">
+    <h2>Featured Artist{{ artists.count|pluralize }}</h2>
+    {% for artist in artists %}
+        {% version artist.image 'croppedthumbnail' as image %}
+        <div class="artist">
+            {% if artist.image %}
+    	       <a href="{{ artist.get_absolute_url }}" 
+    	          title="{{ artist.full_name }}">
+    	          <img src="{{ image }}" 
+    	               width="{{ image.width }}"
+    	               height="{{ image.height }}"
+    	               alt="{{ artist.full_name }}"
+    	               title="{{ artist.full_name }}" />
+    	       </a>
+    	       {% endif %}
+    	   <h3>
+    	       <a href="{{ artist.get_absolute_url }}" 
+    	          alt="{{ artist.full_name }}" 
+    	          title="{{ artist.full_name }}">{{ artist.full_name }}
+    	       </a>
+    	   </h3>
+    	   {% if artist.city and artist.state %}
+    	   <h4>{{ artist.city }}, {{ artist.state }}</h4>
+    	   {% endif %}
+    	   {{ artist.bio|safe|truncatewords_html:50 }}
+        </div>
+    {% endfor %}
+    <p><a href="/artists/" class="teaser">View all Participating Artists</a></p>
+    </div>
+    {% endif %}
+    {% if featured_events %}
+    <div id="events" class="section">
+    <h2>Featured Events</h2>
+    {% for event in featured_events %}
+        <div class="event">
+        	<h3 class="date"><span class="month">{{ event.display_date|date:"M" }}</span>
+                <span class="day">{{ event.display_date|date:"d" }}</span>
+            </h3>
+            {% if event.image %}
+            {% version event.image 'thumbnail' as thumb %}
+            
+                <a href="{{ event.get_absolute_url }}" 
+                   title="{{ event.title }}">
+                   <img src="{{ thumb }}" 
+                        width="{{ thumb.width }}"
+    	                height="{{ thumb.height }}"
+    	                alt="{{ event.title }}"
+    	                title="{{ event.title }}" />
+                </a>
+            {% endif %}
+            <p class="long-date">
+            	{{ event.display_date|date:"l F d, Y" }}
+            </p>
+            <h4>
+                <a href="{{ event.get_absolute_url }}" 
+    	           title="{{ event.full_name }}">{{ event.title }}
+                </a>
+            </h4>
+            {{ event.description|safe|truncatewords_html:25 }}
+        </div>
+    {% endfor %}
+    <p><a href="/events/" class="teaser">View all AiO &amp; Partner Events</a></p>
+    </div>
+    {% endif %}
+    {% if affiliates %}
+    <div id="affiliates" class="section">
+    <h2>Art in the Open Partners</h2>
+    <ul class="affiliates">
+    {% for affiliate in affiliates %}
+        <li>
+        	<a href="{{ affiliate.website }}" target="_blank"
+    	          title="{{ affiliate.name }}">
+           {% if affiliate.image %}
+           {% version affiliate.image 'thumbnail' as thumb %}
+    	          <img src="{{ thumb }}" 
+    	               width="{{ thumb.width }}"
+    	               height="{{ thumb.height }}"
+    	               alt="{{ affiliate.name }}"
+    	               title="{{ affiliate.name }}" />
+    	     	{% endif %}
+    	   {{ affiliate.name }}
+    	   </a>
+           </li>
+    {% endfor %}
+    </ul>
+    <p><a href="/affiliates/" class="teaser">View all AiO Partners &amp; Affiliates</a></p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

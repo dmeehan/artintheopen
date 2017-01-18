@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+{% block main %}
+{% load fb_versions %}
+<div class="main">
+    <div class="article">
+		<h2>{{ article.title }}</h2>
+		{% if article.image %}
+			{% version article.image article.image_size as image %}
+			<img src="{{ image }}" 
+			     class="{{ article.image_location }}"
+            	 width="{{ image.width }}"
+            	 height="{{ image.height }}"
+            	 alt="{{ item.article.title }}"
+            	 title="{{ item.article.title }}" />
+        {% endif %}
+        {{ article.body|safe }}
+     </div>
+</div>
+{% endblock %}
+{% block aside %}
+<div class="aside">
+    {% load fb_versions %}
+    {% for item in sub_items %}
+    <div class="article section">
+        <h2>{{ item.article.title }}</h2>
+            {% if item.article.image %}
+            {% version item.article.image 'thumbnail' as image %}
+                <img src="{{ image }}" 
+                     width="{{ image.width }}"
+                     height="{{ image.height }}"
+                     alt="{{ item.article.title }}"
+                     title="{{ item.article.title }}" />
+            {% endif %}
+            {% if sub_items.count > 1 %}
+                {% if item.article.excerpt %}
+                    {{ item.article.excerpt|safe }}
+                {% else %}
+                    {{ item.article.body|safe|truncatewords_html:25 }}
+                {% endif %}
+                <a class="teaser" href="/{{ item.main_section|lower }}/{{ item.article.slug }}">
+                        Read More...</a>
+            {% else %}
+                {{ item.article.body|safe }}
+            {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+{% endblock %}

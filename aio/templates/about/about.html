@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ block.super }} | About{% endblock %}
+{% block bodyid %}id="about"{% endblock %}
+{% block content %}
+<div class="main">
+{% block articles %}
+{{ block.super }}
+{% endblock %}
+</div>
+{% block aside %}
+{% load fb_versions %}
+<div class="aside">
+    {{ block.super }}
+</div>
+{% endblock %}
+{% endblock %}

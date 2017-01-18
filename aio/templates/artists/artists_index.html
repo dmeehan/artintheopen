@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}{{ block.super }} | Artists {% endblock %}
+{% block bodyid %}id="artists"{% endblock %}
+{% block content %}
+<div class="main">
+{% load fb_versions %}
+{% if featured_artists %}
+    <div class="section">
+    <h2>Featured Artist{{ featured_artists.count|pluralize }}</h2>
+    {% for artist in featured_artists %}
+        <div class="artist">
+            {% if artist.photo %}
+            {% version artist.photo 'thumbnail' as photo %}
+    	       <a href="{{ artist.get_absolute_url }}" 
+    	          title="{{ artist.full_name }}">
+    	          <img class="photo"
+    	               src="{{ photo }}" 
+    	               width="{{ photo.width }}"
+    	               height="{{ photo.height }}"
+    	               alt="{{ artist.full_name }}"
+    	               title="{{ artist.full_name }}" />
+    	       </a>
+    	       {% endif %}
+    	   <h3>
+    	       <a href="{{ artist.get_absolute_url }}" 
+    	          alt="{{ artist.full_name }}" 
+    	          title="{{ artist.full_name }}">{{ artist.full_name }}
+    	       </a>
+    	   </h3>
+    	   {% if artist.city %}
+    	   <h4>{{ artist.city }}{% if artist.state %}, {{ artist.state }}{% endif %}</h4>
+    	   {% endif %}
+           {% if artist.website %}
+		{{ artist.website|urlize }}
+           {% endif %}
+    	   {{ artist.bio|safe }}
+    	   {% if artist.image %}
+    	   <p>
+    	   {% version artist.image 'large' as image %}
+    	       <a href="{{ artist.get_absolute_url }}" 
+    	          title="{{ artist.full_name }}">
+    	          <img class="image"
+    	               src="{{ image }}" 
+    	               width="{{ image.width }}"
+    	               height="{{ image.height }}"
+    	               alt="{{ artist.full_name }}"
+    	               title="{{ artist.full_name }}" />
+    	       </a>
+    	   </p>
+    	       {% endif %}
+        </div>
+    {% endfor %}
+    </div>
+{% endif %}
+{% block articles %}
+{{ block.super }}
+{% endblock %}
+</div>
+<div class="aside">
+{% block aside %}
+{{ block.super }}
+{% endblock %}
+{% if artist_list %}
+    <div class="section">
+    <h2>AiO Artists</h2>
+    {% for artist in artist_list %}
+        {% version artist.image 'croppedthumbnail' as image %}
+        <div class="artist">
+            {% if artist.image %}
+    	       <a href="{{ artist.get_absolute_url }}" 
+    	          title="{{ artist.full_name }}">
+    	          <img src="{{ image }}" 
+    	               width="{{ image.width }}"
+    	               height="{{ image.height }}"
+    	               alt="{{ artist.full_name }}"
+    	               title="{{ artist.full_name }}" />
+    	       </a>
+    	       {% endif %}
+    	   <h3>
+    	       <a href="{{ artist.get_absolute_url }}" 
+    	          title="{{ artist.full_name }}">{{ artist.full_name }}
+    	       </a>
+    	   </h3>
+           {% if artist.city %}
+	   <h4>{{ artist.city }}{% if artist.state %}, {{ artist.state }}{% endif %}</h4>
+           {% endif %}
+    	   {{ artist.bio|safe|truncatewords_html:15 }}
+        </div>
+    {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

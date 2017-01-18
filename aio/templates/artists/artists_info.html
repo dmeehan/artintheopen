@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}{{ block.super }} | Participants {% endblock %}
+{% block js %}
+{{ block.super }}
+<script type="text/javascript" 
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" 
+src="http://www.google.com/jsapi?key=ABQIAAAAayJegR1S7-F1AMio1LsppBQQQy_sjnlSHoxZX2FsIIn-z7Y4GhQYU4F7ksh264zpeovV7XSOmhcBfw"></script>
+<script type="text/javascript" src="/media/js/location_display.js"></script>
+{% endblock %}
+{% block bodyid %}id="participants"{% endblock %}
+{% block content %}
+    <div class="main">
+        {% load fb_versions %}
+        {% block articles %}
+            {{ block.super }}
+        {% endblock %}
+    </div>
+<div class="aside">
+    {% block aside %}
+    <h2>Profile Information</h2>
+    <p><strong>Welcome to Art in the Open,
+            {% if user.first_name %}
+                {{ user.first_name }}.
+            {% else %}
+               {{ user.username }}.
+            {% endif %}
+    </strong>&nbsp;&nbsp;[<a href="{% url logout %}">Logout</a>]
+    <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}<br />
+       <strong>Email:</strong> {{ user.email }}
+    </p>
+    {% if user.artist.location %}
+        <p><strong>Festival Location:</strong></p>
+        <input type="text" value="{{ user.artist.location }}" class="location" />
+    {% endif %}
+    {% endblock %}
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "cms/article_detail.html" %}
+{% block title %}{{ block.super }} | Artists | {{ article.title }}{% endblock %}
+{% block bodyid %}id="artists"{% endblock %}
+{% block content %}
+{% block main %}
+{{ block.super }}      
+{% endblock %}
+{% block aside %}
+{{ block.super }}      
+{% endblock %}
+{% endblock %}

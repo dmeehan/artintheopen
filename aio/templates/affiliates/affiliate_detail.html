@@ -1,0 +1,28 @@
+{% extends "artists/artists.html" %}
+{% block title %}{{ block.super }} : {{ object.full_name }} {% endblock %}
+{% block content %}
+{% load fb_versions %}
+{% version object.image 'big' as image_large %}
+{% version object.photo 'small' as photo_small %}
+<div id="artist">
+    <h2> {{ object.full_name }}</h2>
+    <div class="image">
+        <img src="{{ image_large }}" 
+	               width="{{ image_large.width }}"
+	               height="{{ image_large.height }}"
+	               alt="{{ object.full_name }}"
+	               title="{{ object.full_name }}" />
+	       
+    </div>
+    <div class="photo">
+        <img src="{{ photo_small }}" 
+	               width="{{ photo_small.width }}"
+	               height="{{ photo_small.height }}"
+	               alt="{{ object.full_name }}"
+	               title="{{ object.full_name }}" />
+	       
+    </div>
+	<h3>{{ object.city }}, {{ object.state }}</h3>
+	<p>{{ object.bio|safe }}</p>
+</div>
+{% endblock %}

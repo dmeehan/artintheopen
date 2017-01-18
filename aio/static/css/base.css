@@ -1,0 +1,529 @@
+html {
+	background-color: #0088cb;
+	background-color:rgb(128,196,229);
+}
+
+
+body {
+    width:980px;
+    margin:0 auto;
+    padding:0;
+	background-color:rgb(255,253,240);
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:14px;
+	line-height: 1.5em;
+	color: #666;
+        position:relative;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+}
+
+h2, .impact {
+	font-size: 24px;  
+	color: #71BF44;
+    margin:0 0 0 0;
+}
+
+h2:first-child {
+    margin-top:0;
+}
+
+h3 {
+    font-size:18px;
+}
+
+h4 {
+    font-size:14px;
+}
+
+address {
+    font-style: normal;
+    padding:20px;
+    background-color: #fff;
+}
+
+
+a:link, a:hover, a:visited, a:active {
+	color: #0088CB;
+	text-decoration:none;
+}
+
+a:link, a:visited {
+	text-decoration:none;
+}
+
+a:hover, a:active {
+	text-decoration:underline;
+}
+
+dd {
+
+  margin:5px 0 10px 0;
+  padding:0;
+
+}
+
+dt {
+  font-weight:bold;
+}
+
+ul {
+	list-style:none;
+	margin:0 0 20px 0;
+	padding:0;
+}
+
+ul.bullets {
+    list-style:square;
+	padding:0;
+	margin:0 0 0 20px;
+}
+
+img {
+	border:0;
+}
+
+table, tr, td {
+    margin:0;
+    padding:0;
+}
+
+/******************* HEADER *******************/
+
+#header h1 {
+    padding:0;
+    margin:0;
+	width:980px;
+	height:245px;
+	font-size:10px;
+	
+}
+
+#header h1 {
+	background:url(../images/aio_header.jpg);
+}
+
+
+#header h1 a {
+    display:block;
+    width:960px;
+    height:0;
+    padding:200px 0 0 0;
+    background-color:transparent;
+	background-image:url(../images/aio_logo.png); 
+	background-repeat:no-repeat;
+	background-position:43px 25px;
+    overflow:hidden;
+}
+
+#header #nav ul {
+   text-align:right;
+   list-style:none;
+   background:rgba(255,253,240,0.5);
+   clear:both;
+   overflow:auto;
+   margin:-35px 0 0 0;
+   padding:5px 0 0 20px;
+}
+
+#header #nav li {
+    float:left;
+	margin:0;
+	padding:0;
+}
+
+#header #nav a {
+    float:left;
+    height:30px;
+    width:108px;
+    text-align:center;
+    line-height:30px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    font-family:Lucida Grande, Lucida Sans, Arial, sans serif;
+	margin:0;
+	padding:0;
+}
+
+#header #nav li.user {
+    float:right;
+    margin-right:20px;
+}
+
+#header #nav li.login a {
+    font-weight:normal;
+    font-size:.9em;
+}
+
+body#home #header #nav li#tab-home a,
+body#events #header #nav li#tab-events a,
+body#artists #header #nav li#tab-artists a,
+body#affiliates #header #nav li#tab-affiliates a,
+body#about #header #nav li#tab-about a,
+body#participants #header #nav li#tab-participants a{
+    background:rgb(255,253,240);
+    -moz-border-radius-topleft:10px; 
+    -moz-border-radius-topright:10px;
+    -webkit-border-top-right-radius:10px;
+    -webkit-border-top-left-radius:10px;
+	color:#0088cb;
+}
+
+
+/******************* CONTENT *******************/
+
+
+#content {
+    margin:30px 0 20px 0;
+    padding:0 10px;
+    overflow:auto;
+}
+
+#content div.callout {
+    clear:both;
+	padding:10px;
+    background: #fff2b3;
+	-moz-border-radius:5px;
+    -webkit-border-radius:5px;
+	-o-border-radius:5px;
+	-ms-border-radius:5px;
+	border-radius:5px;
+}
+
+#content p.teaser {
+    margin:-10px 0 30px 0;
+}
+
+#content p.teaser a,
+#content a.teaser {
+    text-decoration:none;
+    padding:2px 6px;
+    display:inline-block;
+    background-color:#fff2b3;
+}
+
+#content p.teaser a:hover,
+#content a:hover.teaser {
+   background-color:#ffd500;
+}
+
+#content img.right {
+    float:right;
+    margin:20px 0 10px 10px;   
+}
+
+#content img.left {
+    float:left;
+    margin:20px 10px 10px 0;   
+}
+
+#content img.bottom {
+   display:block;
+   margin:20px 0 20px 0;  
+}
+
+#content img.top {
+   display:block;
+   margin:20px 0 10px 0;  
+}
+
+#content .artist {
+    clear:both;
+}
+
+#content .article h3:first-child {
+    margin-top:0;   
+}
+
+#content .article ul {
+    list-style:square;
+	padding:0;
+	margin:0 0 0 20px;
+}
+
+#content .artist h3 {
+    margin:0 0 5px 0;   
+}
+
+#content .artist h4 {
+    margin:0 0 10px 0;
+    font-weight:bold;   
+}
+
+#content .event {
+    clear:both;
+    margin-bottom:15px;
+	margin-top:20px;
+	overflow:auto;
+}
+
+#content  .event h3,
+#content  .event h4 {
+   margin:0 0 10px 0;
+   line-height:1.1em;
+}
+
+
+#content .event h3.date {
+   float:left;
+   width:40px;
+   background:#ccc;
+   color:#fff;
+   text-align:center;
+   -moz-border-radius:5px;
+   -webkit-border-radius:5px;
+   padding:1px;
+   margin:0 10px 0 0;
+}
+
+#content .event h3.date.upcoming {
+    background-color:#ffd503;
+}
+
+#content .event h3.date span {
+   display:block;
+   line-height:1em;
+}
+
+#content .event h3.date span.month {
+   font-size:12px;
+   border-bottom:1px solid;
+   border-color:rgba(255,255,255,0.5);
+   text-transform:uppercase;
+   font-weight:normal;
+   padding:2px 0;
+}
+
+#content .event h3.date span.day {
+   font-size:26px;
+   font-weight:bold;
+}
+
+#content .event p { 
+   margin:15px 0 0 0;
+}
+
+#content .event img {
+   clear:both;
+   float:left;
+   margin:10px 10px 10px 0;
+}
+
+#content .event p.long-date {
+   font-size:12px;
+   margin:0 0 0 0;
+   color:#999;
+}
+
+
+/******** content:main  ********/
+
+#content .main {
+    display: inline;/* for IE6 double margin float bug*/
+    float:left;
+    width:540px;
+    margin:0 10px;
+}
+
+#content .main .article {
+    margin:20px 0;
+}
+
+#content .main .article:first-child {
+    margin-top:0;
+}
+
+#content .main .event h3 {
+   margin-bottom:0;
+}
+
+#content .main .event h4 {
+    margin:5px 0 0 0;
+}
+
+#content .main .event h3+h4 {
+   margin:0 0 0 0;
+   padding:0 0 0 0;
+}
+
+#content .main .event p {
+   margin:5px 0;
+}
+
+#content .main .artist {
+    margin-top:20px;
+    margin-bottom:20px; 
+    clear:both;
+}
+
+#content .main .artist h3 {
+    margin:10px 0;   
+}
+
+#content .main .artist img.photo {
+    float:left;
+    margin:0 10px 10px 0;   
+}
+
+#content .main .artist img.image {
+    margin:0 10px 10px 0;   
+}
+
+#content .main .location_map {
+  width: 540px;
+  height: 400px;
+  border: 1px solid black;
+  display: block;
+  margin-top:20px;
+}
+
+/******** content:aside  ********/
+
+#content .aside .location_map  {
+  width:360px;
+  height:356px;
+  border:1px solid black;
+  display:block;
+  margin-top:0;
+}
+
+
+#content .aside {
+    display: inline;/* for IE6 double margin float bug*/
+    float:left;
+    width:380px;
+	margin:40px 10px 0 10px;
+	padding:0;
+}
+
+#content .aside ul {
+    list-style:square;
+	padding:0;
+	margin:0 0 0 20px;
+}
+
+#content .aside h2 {
+   font-family: "Arial-Narrow", Arial, Helvetica, sans-serif;
+   font-size:14px;
+   text-transform:uppercase;
+   border-top:1px solid #C8F5AE;
+   border-top-color:rgb(200,245,174)
+   line-height:1.2em;
+   margin:20px 0 10px 0;
+}
+
+#content .aside h2:first-child {
+	margin-top:0;
+}
+
+#content .aside h3 {
+	font-size:16px;
+}
+
+#content .aside .section {
+    clear:both;
+    margin-bottom:20px;
+}
+
+#content .aside .artist img {
+    float:left;
+    margin:0 10px 10px 0;   
+}
+
+/******************* FOOTER *******************/
+
+#footer {
+    background-color: #0088cb;
+    width:960px;
+    padding:10px;
+    overflow:auto;
+    color:white;
+    position:relative;
+}
+
+#footer #meta,
+#footer #contact {
+    float:left;
+    margin:0 10px;
+}
+
+#footer #meta {
+    width:540px;
+} 
+
+#footer #contact {
+    width:320px;
+}   
+
+#footer #social {
+    width:40px;
+    margin:0 10px;
+    position:absolute;
+    right:10px;
+    bottom:10px;
+}
+
+
+#footer h3  {
+    margin:0 0 10px 0;
+    width:310px;
+}
+
+#footer p {
+    margin:0 0 0 0;
+}
+
+#footer ul {
+    list-style: none;
+    margin:0 10px 0 0;
+    padding:0 0 0 0;
+}
+
+#footer a { 
+    color:rgb(128,196,229)
+}
+
+#footer #credits {
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    height:24px;
+    line-height:24px;
+}
+
+#footer #credits #django {
+    float:left;
+    background:url(../images/djangomade124x25_grey.png);
+    width:124px;
+    height:0px;
+    padding:25px 0 0 0;
+    overflow:hidden;
+}
+
+#footer #credits p {
+    float:left;
+    width:124px;
+    height:25px;
+    line-height:25px;
+    padding:0 0 0 5px;
+}
+
+#footer #twitter, #footer #facebook {
+    float:left;
+    width:36px;
+    height:0;
+    padding:38px 0 0 0;
+    margin:0  auto 5px auto;
+    overflow:hidden;
+}
+
+#footer #twitter {
+    background:url(http://twitter-badges.s3.amazonaws.com/t_logo-b.png) no-repeat;
+}
+
+#footer #facebook {
+    background:url(../images/facebook-icon.png) no-repeat;
+}

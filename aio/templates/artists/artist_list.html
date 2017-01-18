@@ -1,0 +1,15 @@
+{% extends "artists/artists.html" %}
+{% block title %}{{ block.super }}{% endblock %}
+{% block content %}
+<div class="main">
+{% load fb_versions %}
+{% block articles %}
+{{ block.super }}
+{% endblock %}
+</div>
+<div class="aside">
+{% block aside %}
+{{ block.super }}
+{% endblock %}
+</div>
+{% endblock %}

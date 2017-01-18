@@ -1,0 +1,81 @@
+{% extends "events/events.html" %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block js %}
+{{ block.super }}
+{% endblock %}
+
+{% block content %}
+{% load fb_versions %}
+{% block main %}
+<div class="main">
+{% block articles %}
+{{ block.super }}
+{% endblock %}
+        {% if aio_events %}
+        <h2>Art in the Open Events</h2>
+        {% for event in aio_events %}
+        <div class="event aio">
+                <h3>
+                    <a href="{{ event.get_absolute_url }}" 
+        	           title="{{ event.full_name }}">{{ event.title }}
+                    </a>
+                </h3>
+                <h4>
+                {% ifequal event.end_date event.start_date %}
+                    {{ event.start_date|date:"l F d, Y" }}
+                {% else %}
+                    {{ event.start_date|date:"l F d" }}
+                    -
+                    {{ event.end_date|date:"l F d, Y" }}
+                {% endifequal %}
+                </h4>
+                {% if event.image %}
+                {% version event.image 'small' as image %}
+                    <a href="{{ event.get_absolute_url }}" 
+                       title="{{ event.title }}">
+                       <img src="{{ image }}" 
+                            width="{{ image.width }}"
+        	                height="{{ image.height }}"
+        	                alt="{{ event.title }}"
+        	                title="{{ event.title }}"
+        	                class="left" />
+                    </a>
+                {% endif %}
+                {% if event.description %}
+                    {{ event.description|safe }}
+                {% endif %}
+                {% if event.fee %}
+                <h4 class="fee">${{ event.fee }}</h4>
+                {% endif %}
+                {% if event.contact or event.phone or event.email or event.website %}
+                <h4>Contact Info:</h4>
+                <ul>
+                    {% if event.contact %}<li>Contact: {{ event.contact }}</li>{% endif %}
+                    {% if event.phone %}<li>{{ event.phone }}</li>{% endif %}
+                    {% if event.email %}<li>{{ event.email }}</li>{% endif %}
+                    {% if event.website %}<li><a href="{{ event.website }}">{{ event.website }}</a></li>{% endif %}
+                </ul>
+                {% endif %}
+                {% if event.location or event.location.name or event.address or event.city %}
+                <h4>Location:</h4>
+                <ul>
+                    {% if event.location_name %}<li>{{ event.location_name }}</li>{% endif %}
+                    {% if event.address %}<li>{{ event.address }}</li>{% endif %}
+                    {% if event.city %}<li>{{ event.city }}{% if event.state %}, {{ event.state }}{% endif %}</li>{% endif %}
+                </ul>
+                {% endif %}           
+        </div>
+        {% endfor %}
+        {% else %}
+        <h2>Events</h2>
+        <p>There are currently no upcoming Art in the Open events. Check back soon for updates!</p>
+        <p><a href="{% url 'past_events' %}">View all past events</a></p>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block aside %}
+{{ block.super }}
+{% endblock %}
+{% endblock %}

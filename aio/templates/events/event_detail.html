@@ -1,0 +1,81 @@
+{% extends "events/events.html" %}
+
+{% block title %}{{ block.super }} | {{ event.title }}{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" 
+src="http://www.google.com/jsapi?key=ABQIAAAAayJegR1S7-F1AMio1LsppBQQQy_sjnlSHoxZX2FsIIn-z7Y4GhQYU4F7ksh264zpeovV7XSOmhcBfw"></script>
+<script type="text/javascript" src="/media/js/location_display.js"></script>
+{% endblock %}
+
+{% block content %}
+{% load fb_versions %}
+{% block main %}
+<div class="main">
+    <div class="event">
+        <h2>
+            {{ event.title }}
+        </h2>
+        <h3>
+        	{% ifequal event.start_date event.end_date %}
+        		{{ event.start_date|date:"l F d, Y" }}
+        	{% else %}
+         		{{ event.start_date|date:"D F d" }}
+            	to
+            	{{ event.end_date|date:"D F d, Y" }}
+        	{% endifequal %}
+            {% if event.end_time %}-
+		{% ifequal event.start_time|time:"a" event.end_time|time:"a" %}
+                    {{ event.start_time|time:"f" }}
+                {% else %}
+		    {{ event.start_time|time:"P" }}
+                {% endifequal %}
+                to
+                {{ event.end_time|time:"P" }}
+            {% else %}
+             	{% if event.start_time %}-
+                    {{ event.start_time|time:"P" }}
+                {% endif %}
+            {% endif %}
+        </h3>
+        {% if event.image %}
+        {% version event.image 'large' as image %}
+           <img src="{{ image }}" 
+                width="{{ image.width }}"
+                height="{{ image.height }}"
+                alt="{{ event.title }}"
+                title="{{ event.title }}" 
+                class="top" />
+        
+        {% endif %}
+        {% if event.description %}
+            {{ event.description|safe }}
+        {% endif %}
+        {% if event.fee %}
+        <h4 class="fee"><strong>Fee:</strong> ${{ event.fee }}</h4>
+        {% endif %}
+        <h4>Sponsored by {{ event.host }}</h4>
+        <ul>
+        	{% if event.contact %}<li>Contact: {{ event.contact }}</li>{% endif %}
+            {% if event.phone %}<li>{{ event.phone }}</li>{% endif %}
+            {% if event.email %}<li>{{ event.email }}</li>{% endif %}
+            {% if event.website %}<li><a href="{{ event.website }}">{{ event.website }}</a></li>{% endif %}
+        </ul>
+        {% if event.location or event.location.name or event.address or event.city %}
+        <h4>Location</h4>
+        <ul>
+        	{% if event.location_name %}<li>{{ event.location_name }}</li>{% endif %}
+            {% if event.address %}<li>{{ event.address }}</li>{% endif %}
+            {% if event.city %}<li>{{ event.city }}{% if event.state %}, {{ event.state }}{% endif %}</li>{% endif %}
+        </ul>
+        {% if event.location %}<input type="text" value="{{ event.location }}" class="location" />{% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+{% block aside %}
+{{ block.super }}
+{% endblock %}
+{% endblock %}

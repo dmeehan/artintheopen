@@ -1,0 +1,11 @@
+{% extends "cms/article_detail.html" %}
+{% block title %}{{ block.super }} | Events | {{ article.title }}{% endblock %}
+{% block bodyid %}id="events"{% endblock %}
+{% block content %}
+{% block main %}
+{{ block.super }}      
+{% endblock %}
+{% block aside %}
+{{ block.super }}      
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}{{ block.super }} | Events {% endblock %}
+{% block bodyid %}id="events"{% endblock %}
+{% block content %}
+{% load fb_versions %}
+    {% block main %}
+    {% endblock %}
+    {% block aside %}
+    <div id="upcoming_events" class="aside">
+        <h2>AiO and Partner Events Calendar</h2>
+        {% if events %}
+        {% for event in events %}
+        <div class="event">
+        	<h3 class="date"><span class="month">{{ event.display_date|date:"M" }}</span>
+                <span class="day">{{ event.display_date|date:"d" }}</span>
+            </h3>
+            <p class="long-date">
+            	{% ifequal event.start_date event.end_date %}
+                	{{ event.end_date|date:"l F d, Y" }}
+                 {% else %}
+                 	{{ event.start_date|date:"D M d" }} - {{ event.end_date|date:"D M d, Y" }}
+                 {% endifequal %}
+            </p>
+            <h4>
+                <a href="{{ event.get_absolute_url }}" 
+    	           title="{{ event.full_name }}">{{ event.title }}
+                </a>
+            </h4>
+            {% if event.image %}
+            {% version event.image 'thumbnail' as image %}
+            	<a href="{{ event.get_absolute_url }}" 
+                   title="{{ event.title }}">
+                   <img src="{{ image }}" 
+                        width="{{ image.width }}"
+    	                height="{{ image.height }}"
+    	                alt="{{ event.title }}"
+    	                title="{{ event.title }}" />
+                </a>
+            {% endif %}
+            {{ event.description|safe|truncatewords_html:18 }}
+        </div>
+        {% endfor %} 
+        {% else %}
+        <p>There are currently no upcoming partner events. Please check back at a later time for updates.</p>
+        {% endif %}  
+    </div>
+    {% endblock %}
+{% endblock %}
