@@ -1,4 +1,5 @@
 # python modules
+pytz>=2016.10,<2016.20
 gunicorn>=19.6,<19.7 # server
 psycopg2>=2.6.2,<2.7 # postgres bindings
 pillow>=4.0,<4.1 # image manipulation
