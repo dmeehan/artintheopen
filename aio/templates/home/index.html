@@ -17,7 +17,7 @@
             {% if artist.image %}
     	       <a href="{{ artist.get_absolute_url }}" 
     	          title="{{ artist.full_name }}">
-    	          <img src="{{ image.src }}" 
+    	          <img src="{{ image.url }}" 
     	               width="{{ image.width }}"
     	               height="{{ image.height }}"
     	               alt="{{ artist.full_name }}"
@@ -52,7 +52,7 @@
             
                 <a href="{{ event.get_absolute_url }}" 
                    title="{{ event.title }}">
-                   <img src="{{ thumb.src }}" 
+                   <img src="{{ thumb.url }}" 
                         width="{{ thumb.width }}"
     	                height="{{ thumb.height }}"
     	                alt="{{ event.title }}"
@@ -83,7 +83,7 @@
     	          title="{{ affiliate.name }}">
            {% if affiliate.image %}
            {% version affiliate.image 'thumbnail' as thumb %}
-    	          <img src="{{ thumbs.src }}" 
+    	          <img src="{{ thumbs.url }}" 
     	               width="{{ thumb.width }}"
     	               height="{{ thumb.height }}"
     	               alt="{{ affiliate.name }}"
