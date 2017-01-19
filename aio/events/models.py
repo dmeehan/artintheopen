@@ -128,7 +128,7 @@ class Event(models.Model):
   
     @permalink
     def get_absolute_url(self):
-        return ('events_event_detail', None, {
+        return ('event_detail', None, {
             'year': self.start_date.year,
             'month': self.start_date.strftime('%b').lower(),
             'day': self.start_date.day,

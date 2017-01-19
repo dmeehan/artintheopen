@@ -11,7 +11,7 @@ affiliate_info_dict = {
 
 urlpatterns = [
 	url(r'^$', AffiliateIndexView.as_view()),
-	url(r'^(?P<slug>[-\w]+)/$', ArticleDetailView.as_view()),
+	url(r'^(?P<slug>[-\w]+)/$', ArticleDetailView.as_view(), name="affiliates_article_detail"),
 	url(r'^(?P<level>[-\w]+)/(?P<slug>[-\w]+)/$', 
-        AffiliateDetailView.as_view, name='affilates_affilate_detail'),
+        AffiliateDetailView.as_view, name='affilate_detail'),
 ]
