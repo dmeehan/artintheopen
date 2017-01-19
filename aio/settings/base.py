@@ -350,3 +350,12 @@ MAPS_API_KEY = os.environ.get('MAPS_API_KEY', 'ABQIAAAAayJegR1S7-F1AMio1LsppBQQQ
 COMMENTS_AKISMET_API_KEY = '7cbaf5969a99'
 COMMENTS_MODERATE_AFTER = 30 
 COMMENTS_CLOSE_AFTER = 0
+
+FILEBROWSER_VERSIONS = {
+    'admin_thumbnail': {'verbose_name': 'Admin Thumbnail', 'width': 60, 'height': 60, 'opts': 'crop'},
+    'thumbnail': {'verbose_name': 'Thumbnail (1 col)', 'width': 60, 'height': 60, 'opts': 'crop'},
+    'small': {'verbose_name': 'Small (2 col)', 'width': 140, 'height': '', 'opts': ''},
+    'medium': {'verbose_name': 'Medium (4col )', 'width': 300, 'height': '', 'opts': ''},
+    'big': {'verbose_name': 'Big (6 col)', 'width': 460, 'height': '', 'opts': ''},
+    'large': {'verbose_name': 'Large (8 col)', 'width': 500, 'height': '', 'opts': ''},
+}

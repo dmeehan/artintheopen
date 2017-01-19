@@ -15,7 +15,7 @@
                <a href="{{ affiliate.website }}" 
 	              title="{{ affiliate.name }}">
         {% endif %}
-        <img src="{{ image }}" 
+        <img src="{{ image.src }}" 
 	         width="{{ image.width }}"
 	         height="{{ image.height }}"
 	         alt="{{ affiliate.name }}"
@@ -59,7 +59,7 @@
         
             <a href="{{ event.get_absolute_url }}" 
                title="{{ event.title }}">
-               <img src="{{ thumb }}" 
+               <img src="{{ thumb.src }}" 
                     width="{{ thumb.width }}"
 	                height="{{ thumb.height }}"
 	                alt="{{ event.title }}"

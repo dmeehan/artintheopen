@@ -64,6 +64,7 @@ class ArticleDetailView(DetailView):
 class ArtistDetailView(DetailView):
     queryset = Article.live.all()
     template_name = 'artists/artist_detail.html'
+    slug_field = 'slug'
 
     def get_context_data(self, **kwargs):
         context = super(ArtistDetailView, self).get_context_data(**kwargs)
