@@ -46,7 +46,7 @@ MANAGERS = ADMINS
 # Site 
 #==============================================================================
 
-SITE_ID = 1
+SITE_ID = 2
 
 # Hosts/domain names that are valid for this site
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
