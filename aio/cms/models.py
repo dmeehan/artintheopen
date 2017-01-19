@@ -19,7 +19,7 @@ from filebrowser.fields import FileBrowseField
 from fields import PositionField
 
 class LiveManager(models.Manager):
-    def get_query_set(self):
+    def get_queryset(self):
         return super(LiveManager, self).get_query_set().filter(status=self.model.LIVE_STATUS)
 		
 		

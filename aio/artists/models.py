@@ -22,7 +22,7 @@ from locations.fields import LocationField
 from managers import HomeFeatureManager
 
 class LiveArtistManager(models.Manager):
-    def get_query_set(self):
+    def get_queryset(self):
         return super(LiveArtistManager, self).get_query_set().filter(status=self.model.LIVE_STATUS)
     
 class Artist(models.Model):
