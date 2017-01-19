@@ -12,7 +12,7 @@
     	{% endif %}
     	{% if object.photo %}
     	<img src="{{ photo }}" 
-    	               class = "photo"
+    	               class = "photo.url"
     	               width="{{ photo.width }}"
     	               height="{{ photo.height }}"
     	               alt="{{ object.full_name }}"
@@ -24,7 +24,7 @@
     	{{ object.bio|safe }}
     	{% if object.image %}
     	<div class="image">
-            <img src="{{ image }}" 
+            <img src="{{ image.url }}" 
     	               width="{{ image.width }}"
     	               height="{{ image.height }}"
     	               alt="{{ object.full_name }}"
@@ -43,7 +43,7 @@
             {% if artist.image %}
     	       <a href="{{ artist.get_absolute_url }}" 
     	          title="{{ artist.full_name }}">
-    	          <img src="{{ image }}" 
+    	          <img src="{{ image.url }}" 
     	               width="{{ image.width }}"
     	               height="{{ image.height }}"
     	               alt="{{ artist.full_name }}"
