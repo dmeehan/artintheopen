@@ -357,5 +357,5 @@ FILEBROWSER_VERSIONS = {
     'small': {'verbose_name': 'Small (2 col)', 'width': 140, 'height': '', 'opts': ''},
     'medium': {'verbose_name': 'Medium (4col )', 'width': 300, 'height': '', 'opts': ''},
     'big': {'verbose_name': 'Big (6 col)', 'width': 460, 'height': '', 'opts': ''},
-    'large': {'verbose_name': 'Large (8 col)', 'width': 500, 'height': '', 'opts': ''},
+    'large': {'verbose_name': 'Large (8 col)', 'width': 540, 'height': '', 'opts': ''},
 }
