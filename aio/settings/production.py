@@ -19,7 +19,7 @@ ALLOWED_HOSTS = ['artintheopenphila.org', 'www.artintheopenphila.org', 'smtp.web
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.environ.get('DJANGO_DB_NAME', ''),
         'USER': os.environ.get('DJANGO_DB_USER', ''),
         'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD', ''),

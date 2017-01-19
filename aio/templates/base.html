@@ -49,7 +49,7 @@ function validateAmount(amount){
                     <a title="participants" href="{% url 'artist_info' %}">{{ user.first_name }}</a></li>
                 {% else %}
                 <!--<li class="user login">
-                    <a title="login" href="{% url login %}?next=/artists/participants/info">Artist Login</a></li>-->
+                    <a title="login" href="{% url 'login' %}?next=/artists/participants/info">Artist Login</a></li>-->
                 {% endif %}
            </ul>
      {% endblock %}
