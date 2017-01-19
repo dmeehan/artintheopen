@@ -23,7 +23,7 @@ from managers import HomeFeatureManager
 
 class LiveArtistManager(models.Manager):
     def get_queryset(self):
-        return super(LiveArtistManager, self).get_query_set().filter(status=self.model.LIVE_STATUS)
+        return super(LiveArtistManager, self).get_queryset().filter(status=self.model.LIVE_STATUS)
     
 class Artist(models.Model):
     """

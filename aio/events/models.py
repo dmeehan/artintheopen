@@ -25,12 +25,12 @@ from affiliates.models import Affiliate
 class FutureEventManager(models.Manager):
     def get_queryset(self):
         now = datetime.datetime.now()
-        return super(FutureEventManager,self).get_query_set().filter(end_date__gte=now).order_by('start_date')
+        return super(FutureEventManager,self).get_queryset().filter(end_date__gte=now).order_by('start_date')
 
 class FeaturedEventManager(models.Manager):
     def get_queryset(self):
         now = datetime.datetime.now()
-        return super(FeaturedEventManager,self).get_query_set()\
+        return super(FeaturedEventManager,self).get_queryset()\
                                                .filter(end_date__gte=now)\
                                                .filter(featured_home=True)\
                                                .order_by('start_date')
@@ -38,24 +38,24 @@ class FeaturedEventManager(models.Manager):
 class PastEventManager(models.Manager):
     def get_queryset(self):
         now = datetime.datetime.now()
-        return super(PastEventManager,self).get_query_set().filter(start_date__lt=now).order_by('-start_date')
+        return super(PastEventManager,self).get_queryset().filter(start_date__lt=now).order_by('-start_date')
         
 class UpcomingEventManager(models.Manager):
     def get_queryset(self):
         now = datetime.datetime.now()
         limit = datetime.timedelta(weeks=3)
         diff = now + limit
-        return super(UpcomingEventManager,self).get_query_set().filter(start_date__gte=now).filter(start_date__lte=diff).order_by('start_date')
+        return super(UpcomingEventManager,self).get_queryset().filter(start_date__gte=now).filter(start_date__lte=diff).order_by('start_date')
         
 class AIOEventManager(models.Manager):
     def get_queryset(self):
         now = datetime.datetime.now()
-        return super(AIOEventManager,self).get_query_set().filter(end_date__gte=now).filter(aio=True).order_by('start_date')
+        return super(AIOEventManager,self).get_queryset().filter(end_date__gte=now).filter(aio=True).order_by('start_date')
         
 class AIOPastEventManager(models.Manager):
     def get_queryset(self):
         now = datetime.datetime.now()
-        return super(AIOPastEventManager,self).get_query_set().filter(end_date__lt=now).filter(aio=True).order_by('-start_date')
+        return super(AIOPastEventManager,self).get_queryset().filter(end_date__lt=now).filter(aio=True).order_by('-start_date')
     
 class Event(models.Model):
     """

@@ -20,7 +20,7 @@ from fields import PositionField
 
 class LiveManager(models.Manager):
     def get_queryset(self):
-        return super(LiveManager, self).get_query_set().filter(status=self.model.LIVE_STATUS)
+        return super(LiveManager, self).get_queryset().filter(status=self.model.LIVE_STATUS)
 		
 		
 # models for organization of content
