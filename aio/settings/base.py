@@ -358,6 +358,7 @@ FILEBROWSER_VERSIONS = {
     'small': {'verbose_name': 'Small (300px)', 'width': 220, 'height': '', 'opts': ''},
     'medium': {'verbose_name': 'Medium (460px)', 'width': 300, 'height': '', 'opts': ''},
     'large': {'verbose_name': 'Large (540px)', 'width': 540, 'height': '', 'opts': ''},
+    'big': {'verbose_name': 'Large (540px)', 'width': 540, 'height': '', 'opts': ''},
     'cropped': {'verbose_name': 'Cropped (60x60px)', 'width': 60, 'height': 60, 'opts': 'crop'},
     'croppedthumbnail': {'verbose_name': 'Cropped Thumbnail (140x140px)', 'width': 140, 'height': 105, 'opts': 'crop'},
 }
