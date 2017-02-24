@@ -14,7 +14,7 @@
     	       <a href="{{ artist.get_absolute_url }}" 
     	          title="{{ artist.full_name }}">
     	          <img class="photo"
-    	               src="{{ photo }}" 
+    	               src="{{ photo.url }}" 
     	               width="{{ photo.width }}"
     	               height="{{ photo.height }}"
     	               alt="{{ artist.full_name }}"
@@ -40,7 +40,7 @@
     	       <a href="{{ artist.get_absolute_url }}" 
     	          title="{{ artist.full_name }}">
     	          <img class="image"
-    	               src="{{ image }}" 
+    	               src="{{ image.url }}" 
     	               width="{{ image.width }}"
     	               height="{{ image.height }}"
     	               alt="{{ artist.full_name }}"
@@ -64,12 +64,12 @@
     <div class="section">
     <h2>AiO Artists</h2>
     {% for artist in artist_list %}
-        {% version artist.image 'croppedthumbnail' as image %}
+        {% version artist.image 'thumbnail' as image %}
         <div class="artist">
             {% if artist.image %}
     	       <a href="{{ artist.get_absolute_url }}" 
     	          title="{{ artist.full_name }}">
-    	          <img src="{{ image }}" 
+    	          <img src="{{ image.url }}" 
     	               width="{{ image.width }}"
     	               height="{{ image.height }}"
     	               alt="{{ artist.full_name }}"
