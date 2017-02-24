@@ -71,7 +71,7 @@ function validateAmount(amount){
                 	{% if item.article.image %}
                 	{% ifnotequal item.article.image_location "bottom" %}
                     {% version item.article.image item.article.image_size as image  %}
-                    <img src="{{ image }}" class="{{ item.article.image_location }}" 
+                    <img src="{{ image.url }}" class="{{ item.article.image_location }}" 
             	         width="{{ image.width }}"
             	         height="{{ image.height }}"
             	         alt="{{ item.article.title }}"
@@ -87,7 +87,7 @@ function validateAmount(amount){
                     {% if item.article.image %}
                         {% ifequal item.article.image_location "bottom" %}
                         {% version item.article.image item.article.image_size as image  %}
-                        <img src="{{ image }}" class="{{ item.article.image_location }}" 
+                        <img src="{{ image.url }}" class="{{ item.article.image_location }}" 
             	             width="{{ image.width }}"
             	             height="{{ image.height }}"
             	             alt="{{ item.article.title }}"
@@ -98,7 +98,7 @@ function validateAmount(amount){
                 {% if item.display == 2 %}
                 	{% if item.article.image %}
                     {% version item.article.image 'small' as small %}
-                    <img src="{{ small }}" 
+                    <img src="{{ small.url }}" 
                          class="{{ item.article.image_location }}"
             	         width="{{ small.width }}"
             	         height="{{ small.height }}"
@@ -130,7 +130,7 @@ function validateAmount(amount){
                     {% if item.display == 1 %}
                     	{% if item.article.image %}
                         {% version item.article.image 'small' as small %}
-                        <img src="{{ small }}" 
+                        <img src="{{ small.url }}" 
                 	         width="{{ small.width }}"
                 	         height="{{ small.height }}"
                 	         alt="{{ item.article.title }}"
@@ -141,7 +141,7 @@ function validateAmount(amount){
                     {% if item.display == 2 %}
                     	{% if item.article.image %}
                         {% version item.article.image 'small' as small %}
-                        <img src="{{ small }}" 
+                        <img src="{{ small.url }}" 
                 	         width="{{ small.width }}"
                 	         height="{{ small.height }}"
                 	         alt="{{ item.article.title }}"

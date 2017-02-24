@@ -30,7 +30,7 @@
             {% version event.image 'thumbnail' as image %}
             	<a href="{{ event.get_absolute_url }}" 
                    title="{{ event.title }}">
-                   <img src="{{ image }}" 
+                   <img src="{{ image.get_absolute_url }}" 
                         width="{{ image.width }}"
     	                height="{{ image.height }}"
     	                alt="{{ event.title }}"

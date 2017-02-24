@@ -42,7 +42,7 @@ src="http://www.google.com/jsapi?key=ABQIAAAAayJegR1S7-F1AMio1LsppBQQQy_sjnlSHox
         </h3>
         {% if event.image %}
         {% version event.image 'large' as image %}
-           <img src="{{ image }}" 
+           <img src="{{ image.url }}" 
                 width="{{ image.width }}"
                 height="{{ image.height }}"
                 alt="{{ event.title }}"

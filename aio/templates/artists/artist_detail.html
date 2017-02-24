@@ -11,8 +11,8 @@
     	<h3>{{ object.city }}{% if object.state %}, {{ object.state }}{% endif %}</h3>
     	{% endif %}
     	{% if object.photo %}
-    	<img src="{{ photo }}" 
-    	               class = "photo.url"
+    	<img src="{{ photo.url }}" 
+    	               class = "photo"
     	               width="{{ photo.width }}"
     	               height="{{ photo.height }}"
     	               alt="{{ object.full_name }}"

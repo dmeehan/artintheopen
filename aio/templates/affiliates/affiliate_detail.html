@@ -7,7 +7,7 @@
 <div id="artist">
     <h2> {{ object.full_name }}</h2>
     <div class="image">
-        <img src="{{ image_large }}" 
+        <img src="{{ image_large.url }}" 
 	               width="{{ image_large.width }}"
 	               height="{{ image_large.height }}"
 	               alt="{{ object.full_name }}"
@@ -15,7 +15,7 @@
 	       
     </div>
     <div class="photo">
-        <img src="{{ photo_small }}" 
+        <img src="{{ photo_small.url }}" 
 	               width="{{ photo_small.width }}"
 	               height="{{ photo_small.height }}"
 	               alt="{{ object.full_name }}"
