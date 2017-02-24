@@ -64,7 +64,7 @@
     <div class="section">
     <h2>AiO Artists</h2>
     {% for artist in artist_list %}
-        {% version artist.image 'thumbnail' as image %}
+        {% version artist.image 'croppedthumbnail' as image %}
         <div class="artist">
             {% if artist.image %}
     	       <a href="{{ artist.get_absolute_url }}" 
