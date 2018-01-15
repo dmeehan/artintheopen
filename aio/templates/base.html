@@ -81,7 +81,7 @@ function validateAmount(amount){
                     {{ item.article.body|safe }}                    
                     {% if item.article.file %}
                         <p class="download"><strong>Download:</strong>
-                        <a href="{{ item.article.file.url_full }}">
+                        <a href="{{ item.article.file.url }}">
                         {{ item.article.file.filename }}</a> ({{ item.article.file.filesize|filesizeformat }})
                     {% endif %}
                     {% if item.article.image %}
