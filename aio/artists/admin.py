@@ -7,14 +7,14 @@ from .models import *
     
 class ArtistOptions(admin.ModelAdmin):
 
-    def photo(self):
-        if self.photo:
-            return '<img src="%s" />' % self.photo.url_thumbnail
-        else:
-            return ""
-    photo.allow_tags = True
+    #def photo(self):
+    #    if self.photo:
+    #        return '<img src="%s" />' % self.photo.url_thumbnail
+    #    else:
+    #        return ""
+    #photo.allow_tags = True
     
-    list_display = ('last_name', 'first_name', photo, 'status', 'featured_home', 'featured_artists',)
+    list_display = ('last_name', 'first_name', 'status', 'featured_home', 'featured_artists',)
     prepopulated_fields = {'slug': ('first_name','last_name',)}
     fieldsets = (
         (None, {
