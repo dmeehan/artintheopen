@@ -368,12 +368,16 @@ table, tr, td {
 
 #content img.right {
     float:right;
-    margin:20px 0 10px 10px;   
+    margin:20px 0 10px 10px;
+    width: 50%;
+    height: auto;
 }
 
 #content img.left {
     float:left;
-    margin:20px 10px 10px 0;   
+    margin:20px 10px 10px 0; 
+    width: 50%;
+    height: auto;  
 }
 
 @media (max-width: 768px) {
@@ -557,6 +561,11 @@ table, tr, td {
     margin:0 10px 10px 0;  
     width: 100%;
     height: auto; 
+}
+
+.content .main .artist .image img {
+  width: 100%;
+  height: auto; 
 }
 
 #content .main .location_map {
