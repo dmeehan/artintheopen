@@ -653,7 +653,7 @@ table, tr, td {
 }
 
 #footer #meta {
-    margin:0 10px;
+
 }  
 
 footer #contact {
@@ -676,13 +676,11 @@ footer #contact {
   #footer #meta {
     float: left;
     width:540px;
-    margin:0 10px;
   } 
 
   #footer #contact {
     float:left;
     width:320px;
-    margin:0 10px;
   } 
 
   #footer #twitter, #footer #facebook {
