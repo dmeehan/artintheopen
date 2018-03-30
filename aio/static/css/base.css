@@ -141,6 +141,14 @@ table, tr, td {
     overflow:hidden;
 }
 
+@media (max-width: 768px) {
+  #header h1 a {
+    background-position:24px 24px;
+  }
+}
+
+
+
 
 .nav {
    position: fixed;
