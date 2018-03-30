@@ -667,11 +667,34 @@ table, tr, td {
 }   
 
 #footer #social {
+    
+}
+
+@media (min-width: 768px) {
+  #footer #social {
     width:40px;
     margin:0 10px;
     position:absolute;
     right:10px;
     bottom:10px;
+  }
+}
+
+#footer #twitter, #footer #facebook {
+    float:left;
+    width:36px;
+    height:0;
+    padding:38px 0 0 0;
+    margin:0  auto 5px auto;
+    overflow:hidden;
+}
+
+#footer #twitter {
+    background:url(http://twitter-badges.s3.amazonaws.com/t_logo-b.png) no-repeat;
+}
+
+#footer #facebook {
+    background:url(../images/facebook-icon.png) no-repeat;
 }
 
 
@@ -717,21 +740,4 @@ table, tr, td {
     height:25px;
     line-height:25px;
     padding:0 0 0 5px;
-}
-
-#footer #twitter, #footer #facebook {
-    float:left;
-    width:36px;
-    height:0;
-    padding:38px 0 0 0;
-    margin:0  auto 5px auto;
-    overflow:hidden;
-}
-
-#footer #twitter {
-    background:url(http://twitter-badges.s3.amazonaws.com/t_logo-b.png) no-repeat;
-}
-
-#footer #facebook {
-    background:url(../images/facebook-icon.png) no-repeat;
 }
