@@ -653,11 +653,11 @@ table, tr, td {
 }
 
 #footer #meta {
-
+  margin-bottom: 24px;
 }  
 
 #footer #contact {
-    margin:24px 10px;
+    margin:0px 10px;
 } 
 
 #footer #social {
