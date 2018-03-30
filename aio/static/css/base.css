@@ -652,19 +652,13 @@ table, tr, td {
     color:white;
 }
 
-#footer #meta,
-#footer #contact {
-    float:left;
-    margin:0 10px;
-}
-
 #footer #meta {
-    width:540px;
-} 
+    margin:0 10px;
+}  
 
-#footer #contact {
-    width:320px;
-}   
+footer #contact {
+    margin:0 10px 24px 10px;
+} 
 
 #footer #social {
   margin:24px 10px;
@@ -678,6 +672,18 @@ table, tr, td {
     right:10px;
     bottom:10px;
   }
+
+  #footer #meta {
+    float: left;
+    width:540px;
+    margin:0 10px;
+  } 
+
+  #footer #contact {
+    float:left;
+    width:320px;
+    margin:0 10px;
+  } 
 }
 
 #footer #twitter, #footer #facebook {
@@ -685,7 +691,7 @@ table, tr, td {
     width:36px;
     height:0;
     padding:38px 0 0 0;
-    margin:0  24px 5px auto;
+    margin:0  auto 5px auto;
     overflow:hidden;
 }
 
