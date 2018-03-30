@@ -376,18 +376,40 @@ table, tr, td {
     margin:20px 10px 10px 0;   
 }
 
+@media (max-width: 768px) {
+
+  #content img.right {
+      float:none;
+      margin:20px 0 10px 0px; 
+      width: 100%; 
+      height: auto;
+  }
+
+  #content img.left {
+      float:none;
+      margin:20px 0px 10px 0; 
+      width: 100%; 
+      height: auto;   
+  }
+}
+
 #content img.bottom {
    display:block;
-   margin:20px 0 20px 0;  
+   margin:20px 0 20px 0; 
+    width: 100%;  
+    height: auto;
 }
 
 #content img.top {
    display:block;
-   margin:20px 0 10px 0;  
+   margin:20px 0 10px 0; 
+   width: 100%; 
+   height: auto; 
 }
 
 #content .artist {
     clear:both;
+    margin-bottom: 24px;
 }
 
 #content .article h3:first-child {
