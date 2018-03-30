@@ -369,14 +369,14 @@ table, tr, td {
 #content img.right {
     float:right;
     margin:20px 0 10px 10px;
-    width: 50%;
+    width: 60%;
     height: auto;
 }
 
 #content img.left {
     float:left;
     margin:20px 10px 10px 0; 
-    width: 50%;
+    width: 60%;
     height: auto;  
 }
 
