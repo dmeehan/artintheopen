@@ -653,7 +653,7 @@ table, tr, td {
 }
 
 #footer #meta {
-  margin-bottom: 24px;
+  margin:0 10px 24px 10px;
 }  
 
 #footer #contact {
