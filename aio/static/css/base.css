@@ -563,7 +563,7 @@ table, tr, td {
     height: auto; 
 }
 
-.content .main .artist .image img {
+#content .main .artist .image img {
   width: 100%;
   height: auto; 
 }
