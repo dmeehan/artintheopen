@@ -32,7 +32,11 @@ function validateAmount(amount){
 <div id="header">
     {% block header %}
     <h1 id="logo"><a href="/">Art in the Open Philadelphia</a></h1>
-        <div id="nav">
+        <input type="checkbox" id="js-nav-toggle" class="nav-toggle-trigger">
+        <label for="js-nav-toggle" class="nav-toggle">
+            <span>Toggle Navigation</span>
+        </label>
+        <div id="nav" class="nav">
             <ul>
             	 <li id="tab-home">
                     <a title="Home" href="/">Home</a></li>
@@ -164,10 +168,10 @@ function validateAmount(amount){
             <p id="copyright">
                 &copy; {% now "Y" %} <strong>Art in the Open Philadelphia</strong>
             </p>
-	    <div id="credits">
+	    <!--<div id="credits">
 		  <a id="django" href="http://www.djangoproject.com/"> Made with Django</a> 
 		  <p>by <a href="http://www.level0design.com">_level0.design</a></p>
-            </div>
+            </div>-->
 	</div>
         <div id="contact">
             <h3>Contact Art in the Open</h3>
