@@ -536,7 +536,6 @@ body#artists #content {
     -ms-flex-order: 1;              
     -webkit-order: 1;        
     order: 1;
-    padding-top: 40px;
   }
 
   body#artists #content .aside {
@@ -545,8 +544,9 @@ body#artists #content {
 
   body#artists #content .aside h2 {
     font-size: 24px;
-    text-tranform: none;
+    text-transform: none;
     border: none;
+    margin-bottom: 24px;
   }
 
 
