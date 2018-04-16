@@ -62,7 +62,7 @@
 {% endblock %}
 {% if artist_list %}
     <div class="section">
-    <h2>AiO 2018 Artists</h2>
+    <h2>{% now "Y" %} AiO Artists</h2>
     {% for artist in artist_list %}
         {% version artist.image 'croppedthumbnail' as image %}
         <div class="artist">
