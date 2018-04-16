@@ -542,6 +542,14 @@ body#artists #content {
   body#artists #content .aside {
     padding-top: 0;
   }
+
+  body#artists #content .aside h2 {
+    font-size: 24px;
+    text-tranform: none;
+    border: none;
+  }
+
+
 }
 
 
