@@ -382,6 +382,7 @@ table, tr, td {
 #content a:hover.teaser {
    /*background-color:#ffd500;*/
    background-color: #F58025;
+   color: white;
 }
 
 #content img.right {
