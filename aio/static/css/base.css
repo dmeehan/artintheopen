@@ -374,12 +374,14 @@ table, tr, td {
     text-decoration:none;
     padding:2px 6px;
     display:inline-block;
-    background-color:#fff2b3;
+    /*background-color:#fff2b3;*/
+    background-color: #fff400;
 }
 
 #content p.teaser a:hover,
 #content a:hover.teaser {
-   background-color:#ffd500;
+   /*background-color:#ffd500;*/
+   background-color: #F58025;
 }
 
 #content img.right {
