@@ -165,17 +165,17 @@ table, tr, td {
    transition: all 0.5s ease-in-out;
    /*background:rgba(255,253,240,0.95);
    background-color: rgba(0,136,203, 0.95);*/
-   background-color: rgba(255,255,255, 0.95);
+   background-color: rgba(65,173,73, 0.95);
 }
 
 .nav ul {
   margin-top: 64px;
   list-style: none;
-  border-top: 1px solid #41AD49;
+  border-top: 1px solid white;
 }
 
 .nav li {
-  border-bottom: 1px solid #41AD49;
+  border-bottom: 1px solid white;
 }
 
 
@@ -186,6 +186,7 @@ table, tr, td {
     font-family:Lucida Grande, Lucida Sans, Arial, sans serif;
     margin:0;
     padding:12px 24px;
+    color: white;
 }
 
 .nav-toggle {
