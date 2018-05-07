@@ -597,8 +597,12 @@ body#artists #content {
 }
 
 #content .main .event h3+h4 {
-   margin:0 0 0 0;
-   padding:0 0 0 0;
+   /*margin:0 0 0 0;*/
+   /*padding:0 0 0 0;*/
+}
+
+#content .main .event-content {
+   padding-top: 10px;
 }
 
 #content .main .event p {

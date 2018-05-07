@@ -31,6 +31,7 @@
                     {{ event.end_date|date:"l F d, Y" }}
                 {% endifequal %}
                 </h4>
+                <div class="event-content">
                 {% if event.image %}
                 {% version event.image 'small' as image %}
                     <a href="{{ event.get_absolute_url }}" 
@@ -65,7 +66,8 @@
                     {% if event.address %}<li>{{ event.address }}</li>{% endif %}
                     {% if event.city %}<li>{{ event.city }}{% if event.state %}, {{ event.state }}{% endif %}</li>{% endif %}
                 </ul>
-                {% endif %}           
+                {% endif %}    
+                </div>       
         </div>
         {% endfor %}
         {% else %}
